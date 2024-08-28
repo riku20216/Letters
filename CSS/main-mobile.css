@@ -1,0 +1,666 @@
+
+/* ----------フォント指定---------- */
+/* ------------------------------ */
+* {
+    font-family: "Times New Roman", "MS Mincho", serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  @font-face {
+    font-family: '手書き文字';
+    src: url('../Fonts/tegakimoji.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  .selected-text {
+    font-family: '手書き文字', sans-serif;
+  }
+  /* ------------------------------ */
+  /* ------------------------------ */
+  
+  
+  
+  /* ----------全体---------- */
+  /* ----------------------- */
+  body, html {
+    height: 100%;
+    margin: 0;
+    background-color: #f0efe2;
+  }
+  /* ----------------------- */
+  /* ----------------------- */
+  
+  
+  
+  /* ----------メイン要素---------- */
+  /* ---------------------------- */
+  .main-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .main-content {
+    z-index: 2;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .main-content.show {
+    display: flex;
+    opacity: 1;
+  }
+  /* ---------------------------- */
+  /* ---------------------------- */
+  
+  
+  
+  /* ----------タイトル---------- */
+  /* --------------------------- */
+  .letterstitle {
+    position: absolute;
+    top: 8%;
+    left: 48.5%;
+    transform: translate(-50%, -50%);
+    font-size: 1rem;
+    font-weight: bold; 
+    margin-bottom: 1rem;
+    z-index: 99;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+  }
+  /* --------------------------- */
+  /* --------------------------- */
+  
+  
+  
+  /* ----------バーコード画像---------- */
+  /* -------------------------------- */
+  #barcodeImage {
+    position: absolute;
+    top: calc(10% + 2rem);
+    left: 48.5%;
+    transform: translate(-50%, 0); 
+    width: 15%; 
+    display: block;
+    z-index: 98; 
+  }
+  /* -------------------------------- */
+  /* -------------------------------- */
+  
+  
+  
+  /* ----------シーリング画像---------- */
+  /* -------------------------------- */
+  #sealingImage {
+    position: absolute;
+    top: calc(9.8% + 2rem);
+    left: 50%;
+    transform: translate(-50%, 0); 
+    width: 50%; 
+    display: block;
+    z-index: 1; 
+  }
+  /* -------------------------------- */
+  /* -------------------------------- */
+  
+  
+  
+  /* ----------手紙型イメージ画像---------- */
+  /* ----------------------------------- */
+  #additionalImage1,
+  #additionalImage2,
+  #additionalImage3 {
+    position: absolute;
+    top: calc(10% + 2rem);
+    width:90%;
+    height: 70%;
+    z-index: 0;
+    border-radius: 15px;
+  }
+  
+  @keyframes imageFadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes imageFadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+  .fade-in-image {
+    animation: imageFadeIn 2s forwards;
+  }
+  
+  .fade-out-image {
+    animation: imageFadeOut 2s forwards;
+  }
+  /* ----------------------------------- */
+  /* ----------------------------------- */
+  
+  
+  
+  /* ----------バナー要素---------- */
+  /* ---------------------------- */
+  .banner-container {
+    position: relative;
+    top: 42%;
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .custom-top-line {
+    border: none;
+    height: 2px;
+    background-color: #000;
+    margin: 1rem auto;
+    width: 90%;
+  }
+
+  .banner-text {
+    font-size: 0.65rem;
+  }
+  
+  .custom-bottom-line {
+    border: none;
+    height: 2px;
+    background-color: #000;
+    margin: 1rem auto;
+    width: 90%;
+  }
+  /* ---------------------------- */
+  /* ---------------------------- */
+  
+  
+  
+  /* ----------アピールテキスト要素---------- */
+  /* ------------------------------------- */
+  .main-text {
+    position: absolute;
+    top: calc(100% + 2rem);
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 99;
+    text-align: center;
+    width: 100%;
+    padding: 1rem;
+  }
+  
+  .main-text p {
+    margin: 1rem 0;
+    color: #000000;
+    text-align: center;
+  }
+  
+  .title-text {
+    font-size: 1.8rem;
+    letter-spacing: 0.1em;
+  }
+  
+  .subtitle-text {
+    font-size: 1.1rem;
+  }
+  
+  .main-sentence1, .main-sentence2, .main-sentence3, .main-sentence4 {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    font-size: 0.75rem;
+  }
+  
+  .main-sentence1 {
+    margin-top: 4rem; 
+  }
+  
+  .main-sentence2, .main-sentence3, .main-sentence4 {
+    margin-top: 3rem;
+  }
+  /* ------------------------------------- */
+  /* ------------------------------------- */
+  
+  
+  
+  /* ----------アプリ機能説明要素---------- */
+  /* ----------------------------------- */
+  .app-explanation-container {
+    background-color: #ffffff;
+    background-image: url("https://www.transparenttextures.com/patterns/beige-paper.png");
+    position: absolute;
+    top: calc(190% + 2rem);
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 99;
+    text-align: center;
+    width: 100%;
+    padding: 1rem 0rem 0rem 0rem;
+  }
+  
+  #logoImage {
+    position: relative;
+    width:20%;
+    margin-top: 2rem;
+  }
+  
+  .app-explanation-head {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+  }
+  
+  /* ----------1個目機能説明---------- */
+  .app-explanation1 {
+    padding-top: 1rem;
+    padding-left: 1rem;
+  }
+  
+  #useImage1 {
+    max-width: 95%;
+    height: auto;
+    margin-right: 2rem;
+  }
+  
+  .explanation-text-wrapper1 {
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .explanation-text-wrapper1 p{
+    font-size: 1rem;
+  }
+  
+  .app-explanation1 p {
+    line-height: 1.5;
+  }
+  
+  .explanation-text1 {
+    font-size: 1.1rem;
+    margin-left: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .custom-line1 {
+    width: 85%;
+    border-bottom: 1px dashed #9d9d9d;
+    margin: 3rem auto 0 auto;
+  }
+  /* ------------------------------- */
+  
+  /* ----------2個目機能説明---------- */
+  .app-explanation2 {
+    padding-top: 1rem;
+    padding-left: 1rem;
+  }
+  
+  #useImage2 {
+    max-width: 95%;
+    height: auto;
+    margin-right: 2rem;
+  }
+  
+  .explanation-text-wrapper2 {
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .explanation-text-wrapper2 p{
+    font-size: 1rem;
+  }
+  
+  .app-explanation2 p {
+    line-height: 1.5;
+  }
+  
+  .explanation-text2 {
+    font-size: 1.1rem;
+    margin-left: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .custom-line2 {
+    width: 85%;
+    border-bottom: 1px dashed #9d9d9d;
+    margin: 3rem auto 0 auto;
+  }
+  /* ------------------------------- */
+  
+  /* ----------3個目機能説明---------- */
+  .app-explanation3 {
+    padding-top: 1rem;
+    padding-left: 1rem;
+  }
+  
+  #useImage3 {
+    max-width: 95%;
+    height: auto;
+    margin-right: 2rem;
+  }
+  
+  .explanation-text-wrapper3 {
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .explanation-text-wrapper3 p{
+    font-size: 1rem;
+  }
+  
+  .app-explanation3 p {
+    line-height: 1.5;
+  }
+  
+  .explanation-text3 {
+    font-size: 1.1rem;
+    margin-left: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .custom-line3 {
+    width: 85%;
+    border-bottom: 1px dashed #9d9d9d;
+    margin: 3rem auto 0 auto;
+  }
+  /* ------------------------------- */
+  
+  /* ----------4個目機能説明---------- */
+  .app-explanation4 {
+    padding-top: 1rem;
+    padding-left: 1rem;
+  }
+  
+  #useImage4 {
+    max-width: 95%;
+    height: auto;
+    margin-right: 2rem;
+  }
+  
+  .explanation-text-wrapper4 {
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .explanation-text-wrapper4 p{
+    font-size: 1rem;
+  }
+  
+  .app-explanation4 p {
+    line-height: 1.5;
+  }
+  
+  .explanation-text4 {
+    font-size: 1.1rem;
+    margin-left: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .custom-line4 {
+    width: 85%;
+    border-bottom: 1px dashed #9d9d9d;
+    margin: 3rem auto 0 auto;
+  }
+  /* ------------------------------- */
+  
+  /* ----------その他アプリ画面---------- */
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .grid-item {
+    text-align: center;
+  }
+  
+  .grid-item img {
+    width: 90%;
+    height: auto;
+  }
+  
+  .image-caption {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: #333;
+  }
+  /* ------------------------------- */
+  /* ------------------------------- */
+  
+  
+  
+  /* ----------アプリの使用フロー---------- */
+  /* ----------------------------------- */
+  .app_flow {
+    max-width: 85%;
+    margin: 0 auto;
+  }
+  
+  .flow_ttl {
+    font-size: 1.4rem;
+    margin-top: 15%;
+    margin-bottom: 10%;
+  }
+  
+  .flow_accordion {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1.5px dashed #9d9d9d;
+  }
+  
+  .flow_accordion dt {
+    cursor: pointer;
+    text-align: left;
+    font-size: 1rem;
+    padding: 1.5rem 1rem 1.5rem 4rem;
+    margin-bottom: 5px;
+    border-top: 1.5px dashed #9d9d9d;
+    position: relative;
+    counter-increment: item;
+  }
+  
+  .flow_accordion dt::before {
+    content: counter(item) ". ";
+    position: absolute;
+    left: 3%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bold;
+  }
+  
+  .flow_accordion dd {
+    display: none;
+    padding: 0rem 1rem 1rem 4rem;
+    text-align: left;
+    font-size: 1rem;
+  }
+  
+  .flow_accordion dt::after {
+    content: '';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border-left: 0.5rem solid transparent;
+    border-right: 0.5rem solid transparent;
+    border-top: 0.5rem solid #9d9d9d;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .flow_accordion dt.active::after {
+    transform: translateY(-50%) rotate(180deg);
+  }
+  
+  .js_blur {
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .js_blur.show {
+    opacity: 1;
+  }
+  
+  .js_blur:not(.show) {
+    opacity: 0;
+  }
+  
+  .flow_accordion .active {
+    display: block;
+  }
+  /* ----------------------------------- */
+  /* ----------------------------------- */
+  
+  
+  
+  /* --------------Q&A------------------ */
+  /* ----------------------------------- */
+  .app_qa {
+    max-width: 85%;
+    margin: 0 auto;
+    padding: 0rem 0rem 10rem 0rem;
+  }
+  
+  .qa_ttl {
+    font-size: 1.4rem;
+    margin-top: 15%;
+    margin-bottom: 10%;
+  }
+  
+  .qa_accordion {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1.5px dashed #9d9d9d;
+  }
+  
+  .qa_accordion dt {
+    cursor: pointer;
+    text-align: left;
+    font-size: 1rem;
+    padding: 1.5rem 1rem 1.5rem 4rem;
+    margin-bottom: 5px;
+    border-top: 1.5px dashed #9d9d9d;
+    position: relative;
+  }
+  
+  .qa_accordion dt::before {
+    content: "Q";
+    position: absolute;
+    left: 3%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bold;
+  }
+  
+  .qa_accordion dd {
+    display: none;
+    padding: 0rem 1rem 1rem 4rem;
+    text-align: left;
+    font-size: 1rem;
+  }
+  
+  .qa_accordion dt::after {
+    content: '';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border-left: 0.5rem solid transparent;
+    border-right: 0.5rem solid transparent;
+    border-top: 0.5rem solid #9d9d9d;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .qa_accordion dt.active::after {
+    transform: translateY(-50%) rotate(180deg);
+  }
+  
+  .qa_accordion .active {
+    display: block;
+  }
+  /* ----------------------------------- */
+  /* ----------------------------------- */
+  
+  
+  /* ------------フッター要素------------- */
+  /* ----------------------------------- */
+  .footer {
+    width: 100%;
+    text-align: center;
+    padding: 4rem 0rem 1rem 0rem;
+    background-color: #333;
+    color: #fff;
+    font-size: 1rem;
+    position: relative;
+    margin-top: 2rem;
+  }
+  
+  .footer p:first-child {
+    text-align: left;
+    margin-left: 0;
+    margin-left: 10%;
+    margin-bottom: 2%;
+    font-size: 1.5rem;
+  }
+  
+  .footer-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    margin-left: 0; 
+    margin-left: 10%;
+    margin-bottom: 5%;
+  }
+  
+  .footer-menu a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0.5rem 0;
+  }
+  
+  .footer-menu a:hover {
+    text-decoration: underline;
+  }
+  
+  .footer p:last-child {
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
+  /* ----------------------------------- */
+  /* ----------------------------------- */
+  
+  
+  
+  /* ------------スクロールフェードイン------------- */
+  /* ------------------------------------------- */
+  .fadeIn {
+    transition: opacity 2s ease-in;
+    opacity: 0;
+  }
+  
+  .fadeIn.animated {
+    opacity: 1;
+  }
+  /* ------------------------------------------- */
+  /* ------------------------------------------- */
